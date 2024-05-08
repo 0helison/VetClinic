@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require('sequelize');
 const db = require('../../db/connection');
+const Pet = require('./PetModel')
 
 class Tutor extends Model {}
 
@@ -31,6 +32,8 @@ Tutor.init({
     timestamps: true, 
     underscored: true, 
 });
+
+Tutor.hasMany(Pet, { foreignKey: 'tutor_id', as: 'pets' });
 
 module.exports = Tutor;
 
