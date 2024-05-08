@@ -12,7 +12,11 @@ class TutorRepository {
             limit: 10,
         });
     }
-    
+
+    static async updateTutor(tutorId, tutorData) {
+        return await Tutor.update(tutorData, { where: { id: tutorId } })
+    }
+
 }
 
 module.exports = TutorRepository;

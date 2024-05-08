@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const TutorRepository = require('../repository/TutorRepository');
 
 module.exports = class TutorService {
@@ -16,5 +17,14 @@ module.exports = class TutorService {
             throw new Error(error.message)
         }
     }
+
+    static async updateTutor(tutorId, tutorData) {
+        try {
+            await TutorRepository.updateTutor(tutorId, tutorData); 
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+    
    
 };
