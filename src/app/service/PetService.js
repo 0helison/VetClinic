@@ -16,4 +16,12 @@ module.exports = class PetService {
             throw new Error(error.message);
         }
     }
+
+    static async removePet(petId) {
+        try {
+            await PetRepository.removePet(petId)
+        } catch (error) {
+            throw new Error(error.message);
+        }  
+    }
 }; 

@@ -8,6 +8,10 @@ class PetRepository {
     static async updatePet(petId, petData) {
         return await Pet.update(petData, { where: { id: petId } })
     }
+
+    static async removePet(petId) {
+        return await Pet.destroy({ where: { id: petId } })
+    }
 }
 
 module.exports = PetRepository;

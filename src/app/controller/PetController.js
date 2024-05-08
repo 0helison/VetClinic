@@ -29,4 +29,14 @@ module.exports = class PetController {
         }
     }
     
+    static async removePet(req, res) {
+        try {
+            const petId = req.params.petId;
+            await PetService.removePet(petId);
+            res.status(200).json({ message: "Pet removed successfully" });
+        } catch (error) {
+            console.error("Failed to remove pet: ", error);
+            res.status(500).json({ error: "An error occurred while removing the pet" });
+        }
+    }
 };
