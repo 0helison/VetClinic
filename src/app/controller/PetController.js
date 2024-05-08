@@ -1,7 +1,7 @@
 const PetService = require('../service/PetService');
 
 module.exports = class PetController {
-    static async createPet(req, res) {
+    static async createPet(req, res) { 
         try {
             const petData = req.body;
             const tutorId = req.params.tutorId 
@@ -12,6 +12,21 @@ module.exports = class PetController {
             console.error('Error creating pet:', error);
             res.status(500).json({ error: 'An error occurred while creating the pet' });
         } 
+    }
+
+    static async updatePet(req, res) {
+        try {
+            const petData = req.body;
+            const petId = req.params.petId
+            const tutorId = req.params.tutorId
+            petData.tutor_id = tutorId
+
+            await PetService.updatePet(petId, petData); 
+            res.status(200).json({ message: "Pet updated successfully" }); 
+        } catch (error) {
+            console.error("Failed to update pet: ", error);
+            res.status(500).json({ error: "An error occurred while updating the pet" });
+        }
     }
     
 };
