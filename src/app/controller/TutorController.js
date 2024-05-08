@@ -11,5 +11,15 @@ module.exports = class TutorController {
             res.status(500).json({ error: 'An error occurred while creating the tutor' });
         } 
     }
+
+    static async getAllTutors(req, res) {
+        try {
+            const tutors = await TutorService.getAllTutors();
+            res.status(200).json(tutors)
+        } catch (error) {
+            console.error("Failed to get tutors: ", error);
+            res.status(500).json({ error: "An error occurred while getting the tutors"})
+        }
+    }
     
 };

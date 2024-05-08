@@ -7,7 +7,14 @@ module.exports = class TutorService {
         } catch (error) {
             throw new Error(error.message)
         }
-        
+    }
+
+    static async getAllTutors() {
+        try {
+            return await TutorRepository.getAllTutors({ includePets: true });
+        } catch (error) {
+            throw new Error(error.message)
+        }
     }
    
 };
