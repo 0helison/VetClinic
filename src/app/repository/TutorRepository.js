@@ -17,6 +17,9 @@ class TutorRepository {
         return await Tutor.update(tutorData, { where: { id: tutorId } })
     }
 
+    static async removeTutor(tutorId) {
+        return await Tutor.destroy({ where: { id: tutorId } })
+    }
 }
 
 module.exports = TutorRepository;

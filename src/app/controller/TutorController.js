@@ -33,5 +33,16 @@ module.exports = class TutorController {
             res.status(500).json({ error: "An error occurred while updating the tutor" });
         }
     }
+
+    static async removeTutor(req, res) {
+        try {
+            const tutorId = req.params.id;
+            await TutorService.removeTutor(tutorId);
+            res.status(200).json({ message: "Tutor removed successfully" });
+        } catch (error) {
+            console.error("Failed to remove tutor: ", error);
+            res.status(500).json({ error: "An error occurred while removing the tutor" });
+        }
+    }
     
 };
