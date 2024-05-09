@@ -12,8 +12,13 @@ class PetRepository {
     static async removePet(petId) {
         return await Pet.destroy({ where: { id: petId } })
     }
+
+    static async getByPetId(petId) {
+        const pet = await Pet.findByPk(petId);
+        return pet;
+    }
 }
 
 module.exports = PetRepository;
 
- 
+  
