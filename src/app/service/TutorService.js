@@ -30,8 +30,7 @@ module.exports = class TutorService {
             await TutorRepository.removeTutor(tutorId)
         } catch (error) {
             throw new Error(error.message);
-        }
-        
+        }  
     }
    
 };

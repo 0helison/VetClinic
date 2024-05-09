@@ -1,5 +1,5 @@
 const { DataTypes, Model } = require('sequelize');
-const db = require('../../db/connection');
+const db = require('../../config/connection');
 const Pet = require('./PetModel')
 
 class Tutor extends Model {}
@@ -19,7 +19,7 @@ Tutor.init({
     },
     date_of_birth: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false, 
     },
     zip_code: {
         type: DataTypes.STRING,

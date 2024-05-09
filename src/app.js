@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 require('dotenv').config();
-const syncDB = require("./config/db");
-const TutorRouters = require("./routers/TutorRouters");
-const PetRouters = require("./routers/PetRouters");
+const syncDB = require('./config/db');
+const TutorRouters = require('./routers/TutorRouters');
+const PetRouters = require('./routers/PetRouters');
 
 const PORT = process.env.PORT || 3000;
 
