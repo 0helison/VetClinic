@@ -29,8 +29,12 @@ module.exports = class TutorController {
             await TutorService.updateTutor(tutorId, tutorData); 
             res.status(200).json({ message: "Tutor updated successfully" }); 
         } catch (error) {
-            console.error("Failed to update tutor: ", error);
-            res.status(500).json({ error: "An error occurred while updating the tutor" });
+            if (error.message === 'Tutor not found') {
+                res.status(404).json({ error: "Tutor not found" });
+            } else {
+                console.error("Failed to update tutor: ", error);
+                res.status(500).json({ error: "An error occurred while updating the tutor" });
+            }
         }
     }
 
@@ -40,8 +44,12 @@ module.exports = class TutorController {
             await TutorService.removeTutor(tutorId);
             res.status(200).json({ message: "Tutor removed successfully" });
         } catch (error) {
-            console.error("Failed to remove tutor: ", error);
-            res.status(500).json({ error: "An error occurred while removing the tutor" });
+            if (error.message === 'Tutor not found') {
+                res.status(404).json({ error: "Tutor not found" });
+            } else {
+                console.error("Failed to remove tutor: ", error);
+                res.status(500).json({ error: "An error occurred while removing the tutor" });
+            }
         }
     }
     

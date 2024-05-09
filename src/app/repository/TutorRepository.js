@@ -14,11 +14,16 @@ class TutorRepository {
     }
 
     static async updateTutor(tutorId, tutorData) {
-        return await Tutor.update(tutorData, { where: { id: tutorId } })
+        await Tutor.update(tutorData, { where: { id: tutorId } });
     }
 
     static async removeTutor(tutorId) {
         return await Tutor.destroy({ where: { id: tutorId } })
+    }
+
+    static async getByTutorId(tutorId) {
+        const tutor = await Tutor.findByPk(tutorId);
+        return tutor;
     }
 }
 
