@@ -1,0 +1,395 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CRUD - VetClinic",
+    "description": "API for managing pets and tutors in a veterinary clinic",
+    "version": "1.0.0",
+    "contact": {
+      "email": "helissonpontes69@gmail.com"
+    },
+    "termsOfService": "http://localhost:3000/terms"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/vetclinic",
+      "description": "Test API"
+    }
+  ],
+  "paths": {
+    "/tutor": {
+      "post": {
+        "summary": "Tutor registration",
+        "description": "Route responsible for registering a new tutor",
+        "tags": ["Tutors"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tutor"
+              },
+              "examples": {
+                "tutor": {
+                  "value": {
+                    "name": "Paulo",
+                    "phone": "83910605001",
+                    "email": "paulo@paidepet.com",
+                    "date_of_birth": "2006-12-01",
+                    "zip_code": "18750000"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Tutor created successfully"
+          },
+          "422": {
+            "description": "Validation error. Check if all required fields were provided and are correct."
+          },
+          "500": {
+            "description": "Internal server error. There was a problem processing the request."
+          }
+        }
+      }
+    },
+    "/tutors": {
+      "get": {
+        "summary": "List all tutors",
+        "description": "Route responsible for listing all registered tutors, along with their associated pets",
+        "tags": ["Tutors"],
+        "responses": {
+          "200": {
+            "description": "List of tutors and their pets retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "date_of_birth": {
+                        "type": "string"
+                      },
+                      "zip_code": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      },
+                      "pets": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Pet"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error. There was a problem processing the request."
+          }
+        }
+      }
+    },
+    "/tutor/{id}": {
+      "put": {
+        "summary": "Update an existing tutor",
+        "description": "Route responsible for updating an existing tutor based on the provided ID",
+        "tags": ["Tutors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the tutor to be updated",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tutor"
+              },
+              "examples": {
+                "tutor": {
+                  "value": {
+                    "name": "Paulo",
+                    "phone": "83910605001",
+                    "email": "paulo@paidepet.com",
+                    "date_of_birth": "2006-12-01",
+                    "zip_code": "18750000"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tutor updated successfully"
+          },
+          "404": {
+            "description": "Tutor not found"
+          },
+          "422": {
+            "description": "Validation error. Check if all required fields were provided and are correct."
+          },
+          "500": {
+            "description": "Internal server error. There was a problem processing the request."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing tutor",
+        "description": "Route responsible for deleting an existing tutor based on the provided ID",
+        "tags": ["Tutors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the tutor to be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tutor deleted successfully"
+          },
+          "404": {
+            "description": "Tutor not found"
+          },
+          "500": {
+            "description": "Internal server error. There was a problem processing the request."
+          }
+        }
+      }
+    },
+    "/pet/{tutorId}": {
+      "post": {
+        "summary": "Register a pet for a specific tutor",
+        "description": "Route responsible for registering a new pet for a specific tutor",
+        "tags": ["Pets"],
+        "parameters": [
+          {
+            "name": "tutorId",
+            "in": "path",
+            "description": "ID of the tutor",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              },
+              "examples": {
+                "pet": {
+                  "value": {
+                    "name": "Rex",
+                    "species": "Dog",
+                    "carry": "Large",
+                    "weight": 20,
+                    "date_of_birth": "2018-01-01",
+                    "tutor_id": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pet created successfully"
+          },
+          "422": {
+            "description": "Validation error. Check if all required fields were provided and are correct."
+          },
+          "500": {
+            "description": "Internal server error. There was a problem processing the request."
+          }
+        }
+      }
+    },
+    "/pet/{petId}/tutor/{tutorId}": {
+      "put": {
+        "summary": "Update an existing pet",
+        "description": "Route responsible for updating an existing pet based on the provided ID",
+        "tags": ["Pets"],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of the pet to be updated",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "tutorId",
+            "in": "path",
+            "description": "ID of the tutor who owns the pet",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              },
+              "examples": {
+                "pet": {
+                  "value": {
+                    "name": "Rex",
+                    "species": "Dog",
+                    "carry": "p",
+                    "weight": 22,
+                    "date_of_birth": "2018-01-01"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pet updated successfully"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "422": {
+            "description": "Validation error. Check if all required fields were provided and are correct."
+          },
+          "500": {
+            "description": "Internal server error. There was a problem processing the request."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing pet",
+        "description": "Route responsible for deleting an existing pet based on the provided ID",
+        "tags": ["Pets"],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of the pet to be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "tutorId",
+            "in": "path",
+            "description": "ID of the tutor who owns the pet",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet deleted successfully"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "500": {
+            "description": "Internal server error. There was a problem processing the request."
+          }
+        }
+      }
+    }
+    
+  },
+  "components": {
+    "schemas": {
+      "Tutor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "date_of_birth": {
+            "type": "string"
+          },
+          "zip_code": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "phone", "email", "date_of_birth", "zip_code"]
+      },
+      "Pet": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "species": {
+            "type": "string"
+          },
+          "carry": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "date_of_birth": {
+            "type": "string"
+          },
+          "tutor_id": {
+            "type": "integer"
+          }
+        },
+        "required": ["name", "species", "carry", "weight", "date_of_birth", "tutor_id"]
+      }
+    }
+  }
+}
