@@ -24,15 +24,11 @@ Pet.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    tutor_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    }
 }, {
     sequelize: db,
     modelName: 'Pet',
     tableName: 'pets',
-    timestamps: true, 
+    timestamps: false, 
     underscored: true, 
 });
 

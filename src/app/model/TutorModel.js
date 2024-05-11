@@ -29,7 +29,7 @@ Tutor.init({
     sequelize: db,
     modelName: 'Tutor',
     tableName: 'tutors',
-    timestamps: true, 
+    timestamps: false, 
     underscored: true, 
 });
 
