@@ -49,9 +49,9 @@ npm install
 Create a `.env` file in the project root and fill it as per the example in `.env.example`:
 ```bash
 DB_DIALECT=sqlite
-DB_STORAGE=./src/config/apiDB.sqlite
+DB_STORAGE=./src/config/vetclinic.sqlite
 DB_HOST=localhost
-DB_DATABASE=apiDB
+DB_DATABASE=vetclinic
 DB_USER=''
 DB_PASSWORD=''
 PORT=3000
