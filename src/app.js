@@ -13,5 +13,5 @@ app.use('/vetclinic', PetRouters);
 
 app.listen(PORT, async () => {
   await syncDB();
-  console.log(`O Express está rodando na porta ${PORT}`);
+  console.log(`The Express is running at the door ${PORT}`);
 });

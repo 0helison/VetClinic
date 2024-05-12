@@ -3,9 +3,9 @@ const db = require('./connection');
 async function syncDB() {
     try {
         await db.sync();
-        console.log('Modelos sincronizados com o banco de dados.');
+        console.log('Models synchronized with the database.');
     } catch (error) {
-        console.error('Erro ao sincronizar modelos com o banco de dados:', error);
+        console.error('Error synchronizing models with the database:', error);
     }
 }
 
