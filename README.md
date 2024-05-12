@@ -56,13 +56,13 @@ DB_USER=''
 DB_PASSWORD=''
 PORT=3000
 ```
-- DB_DIALECT=sqlite → name of the database used;
-- DB_STORAGE=./src/config/apiDB.sqlite → example of the path you define to create the database;
-- DB_HOST=localhost → used host;
-- DB_DATABASE=apiDB → name of the database to be created;
-- DB_USER='' → username (for SQLite it's usually an empty field);
-- DB_PASSWORD='' → user password (for SQLite it's usually an empty field);
-- PORT=3000 → port your application will use;
+- DB_DIALECT= → name of the database used;
+- DB_STORAGE= → example of the path you define to create the database;
+- DB_HOST= → used host;
+- DB_DATABASE= → name of the database to be created;
+- DB_USER= → username (for SQLite it's usually an empty field);
+- DB_PASSWORD= → user password (for SQLite it's usually an empty field);
+- PORT= → port your application will use;
 
 ---
 
