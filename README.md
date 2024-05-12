@@ -23,7 +23,8 @@ Este desafio teve como objetivo criar uma API que armazenasse informações sobr
 "express-validator": "^7.0.1",
 "sequelize": "^6.37.3",
 "sqlite3": "^5.1.7",
-"swagger-ui-express": "^5.0.0"
+"swagger-ui-express": "^5.0.0",
+"nodemon": "^3.1.0"
 ```
 
 #### Framekors:
@@ -69,7 +70,7 @@ PORT=3000
 ## - Uso
 Em sua máquina local, crie um diretório e insira o seguinte comando:
 ```bash
-node .\src\app.js
+npm run dev
 ```
 Acesse a API através da URL base:
 ```bash
