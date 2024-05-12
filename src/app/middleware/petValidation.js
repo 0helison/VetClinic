@@ -3,37 +3,32 @@ const { body } = require('express-validator');
 const petCreateValidation = () => {
     return [
         body('name')
-            .trim()
-            .isString().withMessage('O nome é obrigatório.')
-            .isLength({ min: 2 }).withMessage('O nome deve ter no mínimo 2 caracteres.')
-            .isLength({ max: 30 }).withMessage('O nome deve ter no máximo 30 caracteres.'),
+            .isString().withMessage('The name is mandatory.')
+            .isLength({ min: 2 }).withMessage('The name must have at least 2 characters.')
+            .isLength({ max: 30 }).withMessage('The name must have a maximum of 30 characters.'),
 
         body('species')
-            .trim()
-            .isString().withMessage('A espécie é obrigatória.')
-            .isLength({ min: 2 }).withMessage('A espécie deve ter no mínimo 2 caracteres.')
-            .isLength({ max: 20 }).withMessage('A espécie deve ter no máximo 20 caracteres.'),
+            .isString().withMessage('The species is mandatory.')
+            .isLength({ min: 2 }).withMessage('The species must have at least 2 characters.')
+            .isLength({ max: 20 }).withMessage('The species must have a maximum of 30 characters.'),
 
         body("carry")
-            .trim()
-            .isString().withMessage('O carry é obrigatório.')
-            .isLength({ min: 1 }).withMessage('O carry deve ter no mínimo 1 caractere.')
-            .isLength({ max: 1 }).withMessage('O carry deve ter no máximo 1 caractere.'),
+            .isString().withMessage('The carry is mandatory.')
+            .isLength({ min: 1 }).withMessage('The carry must have at least 2 characters.')
+            .isLength({ max: 1 }).withMessage('The carry must have a maximum of 1 character.'),
 
         body("weight")
-            .trim()
-            .isNumeric().withMessage('O peso precisa ser um número.')
+            .isNumeric().withMessage('The weight needs to be a number.')
             .custom((value) => {
                 if (value < 0) {
-                    throw new Error('Valor inválido, não existe peso negativo!');
+                    throw new Error('Invalid value, there is no negative weight!');
                 } 
                 return true;
             }),
 
         body("date_of_birth")
-            .trim()
-            .isString().withMessage('A data de aniversário é obrigatória.')
-            .matches(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/).withMessage('A data de nascimento deve estar no formato "YYYY-MM-DD HH:mm"')
+            .isString().withMessage('The date of birth is mandatory.')
+            .matches(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/).withMessage('The date of birth must be in the format "YYYY-MM-DD HH:mm"')
     ];
 };
 

@@ -3,30 +3,25 @@ const { body } = require('express-validator');
 const tutorCreateValidation = () => {
     return [
         body('name')
-            .trim()
-            .isString().withMessage('O nome é obrigatório.')
-            .isLength({ min: 2 }).withMessage('O nome deve ter no mínimo 2 caracteres.')
-            .isLength({ max: 30 }).withMessage('O nome deve ter no máximo 30 caracteres.'),
+            .isString().withMessage('The name is mandatory.')
+            .isLength({ min: 2 }).withMessage('The name must have at least 2 characters.')
+            .isLength({ max: 30 }).withMessage('The name must have a maximum of 30 characters.'),
 
         body('phone')
-            .trim()
-            .isString().withMessage('O telefone é obrigatório.')
-            .matches(/^[0-9]{11}$/).withMessage('O telefone deve conter os 11 dígitos, sem espaços ou caracteres especiais.'),
+            .isString().withMessage('The phone is mandatory.')
+            .matches(/^[0-9]{11}$/).withMessage('The phone number must contain 11 digits, without spaces or special characters.'),
 
         body("email")
-            .trim()
-            .isString().withMessage('O e-mail é obrigatório.')
-            .isEmail().withMessage('O email fornecido não é válido'),
+            .isString().withMessage('The email is mandatory.')
+            .isEmail().withMessage('The email provided is not valid'),
 
         body("date_of_birth")
-            .trim()
-            .isString().withMessage('A data de aniversário é obrigatória.')
-            .matches(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/).withMessage('A data de nascimento deve estar no formato "YYYY-MM-DD HH:mm"'),
+            .isString().withMessage('The date of birth is mandatory.')
+            .matches(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/).withMessage('The date of birth must be in the format "YYYY-MM-DD HH:mm"'),
 
         body("zip_code")
-            .trim()
-            .isString().withMessage('O CEP é obrigatório.')
-            .matches(/^\d{8}$/).withMessage('O CEP deve conter os 8 dígitos, sem espaços ou caracteres especiais.')
+            .isString().withMessage('The ZIP code is mandatory.')
+            .matches(/^\d{8}$/).withMessage('The ZIP code must contain 8 digits, without spaces or special characters.')
     ];
 };
 
