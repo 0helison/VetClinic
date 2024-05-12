@@ -1,9 +1,9 @@
-# API da Clínica Veterinária
+# Veterinary Clinic API
 
 ---
 
-## - Descrição
-Este desafio teve como objetivo criar uma API que armazenasse informações sobre tutores e pets de uma clínica veterinária, utilizando o framework Express, a ORM Sequelize e integrando o Sqlite com Node.js.
+## - Description
+This challenge aimed to create an API that stores information about pet owners and pets of a veterinary clinic, using the Express framework, the Sequelize ORM, and integrating SQLite with Node.js.
 
 ---
 
@@ -34,20 +34,20 @@ Este desafio teve como objetivo criar uma API que armazenasse informações sobr
 
 ---
 
-## - Instalação
-Em sua máquina local, crie um diretório e insira o seguinte comando:
+## - Installation
+On your local machine, create a directory and insert the following command:
 ```bash
 git clone https://github.com/0helison/VetClinic.git .
 ```
-Após clonar o repositório, execute:
+After cloning the repository, execute:
 ```bash
 npm install
 ```
 
 ---
 
-## - Configuração do Banco de Dados e Porta
-Crie um arquivo `.env` na raiz do projeto e preencha o arquivo `.env` conforme o exemplo em `.env.example`:
+## - Database and Port Configuration
+Create a `.env` file in the project root and fill it as per the example in `.env.example`:
 ```bash
 DB_DIALECT=sqlite
 DB_STORAGE=./src/config/apiDB.sqlite
@@ -57,36 +57,36 @@ DB_USER=''
 DB_PASSWORD=''
 PORT=3000
 ```
-- DB_DIALECT=sqlite →  nome  do banco de dados utilizado;
-- DB_STORAGE=./src/config/apiDB.sqlite → exemplo de caminho que você define pra criar o banco;
-- DB_HOST=localhost → host utilizado;
-- DB_DATABASE=apiDB → nome do banco de dados que será criado;
-- DB_USER='' → nome do usuário (para sqlite geralmente é um campo vazio);
-- DB_PASSWORD='' → senha do usuário (para sqlite geralmente é um campo vazio);
-- PORT=3000 → porta que sua aplicação irá utilizar;
+- DB_DIALECT=sqlite → name of the database used;
+- DB_STORAGE=./src/config/apiDB.sqlite → example of the path you define to create the database;
+- DB_HOST=localhost → used host;
+- DB_DATABASE=apiDB → name of the database to be created;
+- DB_USER='' → username (for SQLite it's usually an empty field);
+- DB_PASSWORD='' → user password (for SQLite it's usually an empty field);
+- PORT=3000 → port your application will use;
 
 ---
 
-## - Uso
-Em sua máquina local, crie um diretório e insira o seguinte comando:
+## - Usage
+On your local machine, create a directory and insert the following command:
 ```bash
 npm run dev
 ```
-Acesse a API através da URL base:
+Access the API through the base URL:
 ```bash
 http://localhost:3000/vetclinic
 ```
 
 ---
 
-# Entidade - Tutor
+# Entity - Tutor
 
-##  - Exemplo de Requisição POST para Cadastrar um Tutor
+##  - Example of POST Request to Register a Tutor
 - **POST /tutor**
   ```
   http://localhost:3000/vetclinic/tutor
   ```
-  - **Exemplo de JSON**:
+  - **Example JSON**:
     ```json
     {
         "name": "Antonio Carlos",
@@ -96,50 +96,50 @@ http://localhost:3000/vetclinic
         "zip_code": "18750000"
     }
     ```
-  - **Respostas Possíveis**:
-    - **201 Created**: Tutor criado com sucesso.
-    - **422 Unprocessable Entity**: Erros de validação no corpo da solicitação.
-    - **500 Internal Server Error**: Ocorreu um erro ao criar o tutor.
+  - **Possible Responses**:
+    - **201 Created**: Tutor created successfully.
+    - **422 Unprocessable Entity**: Validation errors in the request body.
+    - **500 Internal Server Error**: An error occurred while creating the tutor.
 
-## - Exemplo de Requisição GET para Obter Todos os Tutores
+## - Example of GET Request to Get All Tutors
 - **GET /tutors**
   ```
   http://localhost:3000/vetclinic/tutors
   ```
-  - **Exemplo de JSON de Resposta**:
+  - **Example Response JSON**:
     ```json
     [
       {
         "id": 1,
-        "name": "Antonio Marlos",
-        "phone": "85960005001",
-        "email": "antmarlos@tiodepet.com",
-        "date_of_birth": "1972-05-13 14:22",
-        "zip_code": "40750000",
+        "name": "Lucas Pedro",
+        "phone": "83981605001",
+        "email": "lucasp@paidepet.com",
+        "date_of_birth": "2006-12-01T17:15:00.000Z",
+        "zip_code": "23750000",
         "pets": [
-                {
-                    "id": 1,
-                    "name": "Fuleco",
-                    "species": "tatu",
-                    "carry": "p",
-                    "weight": 2,
-                    "date_of_birth": "2024-01-10 19:24",
-                    "tutor_id": 1
-                }
-            ]
-        }
+          {
+            "id": 1,
+            "name": "Perigoso",
+            "species": "dog",
+            "carry": "p",
+            "weight": 7,
+            "date_of_birth": "2021-03-01T23:59:00.000Z",
+            "tutor_id": 3
+          }
+        ]
+      }
     ]
     ```
-  - **Respostas Possíveis**:
-    - **200 OK**: Tutores obtidos com sucesso.
-    - **500 Internal Server Error**: Ocorreu um erro ao obter os tutores.
+  - **Possible Responses**:
+    - **200 OK**: Tutors obtained successfully.
+    - **500 Internal Server Error**: An error occurred while getting the tutors.
 
-## - Exemplo de Requisição PUT para Atualizar um Tutor
+## - Example of PUT Request to Update a Tutor
 - **PUT /tutor/:id**
   ```
   http://localhost:3000/vetclinic/tutor/:id
   ```
-  - **Exemplo de JSON**:
+  - **Example JSON**:
     ```json
     {
         "name": "Antonio Marlos",
@@ -149,32 +149,32 @@ http://localhost:3000/vetclinic
         "zip_code": "40750000"
     }
     ```
-  - **Respostas Possíveis**:
-    - **200 OK**: Tutor atualizado com sucesso.
-    - **404 Not Found**: Tutor não encontrado.
-    - **422 Unprocessable Entity**: Erros de validação no corpo da solicitação.
-    - **500 Internal Server Error**: Ocorreu um erro ao atualizar o tutor.
+  - **Possible Responses**:
+    - **200 OK**: Tutor updated successfully.
+    - **404 Not Found**: Tutor not found.
+    - **422 Unprocessable Entity**: Validation errors in the request body.
+    - **500 Internal Server Error**: An error occurred while updating the tutor.
 
-##  -Exemplo de Requisição DELETE para Remover um Tutor
+##  - Example of DELETE Request to Remove a Tutor
 - **DELETE /tutor/:id**
   ```
   http://localhost:3000/vetclinic/tutor/:id
   ```
-  - **Respostas Possíveis**:
-    - **200 OK**: Tutor removido com sucesso.
-    - **404 Not Found**: Tutor não encontrado.
-    - **500 Internal Server Error**: Ocorreu um erro ao remover o tutor.
+  - **Possible Responses**:
+    - **200 OK**: Tutor removed successfully.
+    - **404 Not Found**: Tutor not found.
+    - **500 Internal Server Error**: An error occurred while removing the tutor.
 
 ---
 
-## Entidade Pet
+# Entity Pet
 
-### - Exemplo de Requisição POST para Cadastrar um Pet
+### - Example of POST Request to Register a Pet
 - **POST /pet/:tutorId**
   ```
   http://localhost:3000/vetclinic/pet/:tutorId
   ```
-  - **Exemplo de JSON**:
+  - **Example JSON**:
     ```json
     {
         "name": "Caramelo",
@@ -184,17 +184,17 @@ http://localhost:3000/vetclinic
         "date_of_birth": "2021-03-01 20:59"
     }    
     ```
-  - **Respostas Possíveis**:
-    - **201 Created**: Pet criado com sucesso.
-    - **422 Unprocessable Entity**: Erros de validação no corpo da solicitação.
-    - **500 Internal Server Error**: Ocorreu um erro ao criar o pet.
+  - **Possible Responses**:
+    - **201 Created**: Pet created successfully.
+    - **422 Unprocessable Entity**: Validation errors in the request body.
+    - **500 Internal Server Error**: An error occurred while creating the pet.
 
-### - Exemplo de Requisição PUT para Atualizar um Pet
+### - Example of PUT Request to Update a Pet
 - **PUT /pet/:petId/tutor/:tutorId**
   ```
   http://localhost:3000/vetclinic/pet/:petId/tutor/:tutorId
   ```
-  - **Exemplo de JSON**:
+  - **Example JSON**:
     ```json
     {
         "name": "Pingo",
@@ -204,18 +204,20 @@ http://localhost:3000/vetclinic
         "date_of_birth": "2024-01-10 19:24"
     } 
     ```
-  - **Respostas Possíveis**:
-    - **200 OK**: Pet atualizado com sucesso.
-    - **404 Not Found**: Pet não encontrado.
-    - **422 Unprocessable Entity**: Erros de validação no corpo da solicitação.
-    - **500 Internal Server Error**: Ocorreu um erro ao atualizar o Pet.
+  - **Possible Responses**:
+    - **200 OK**: Pet updated successfully.
+    - **404 Not Found**: Pet not found.
+    - **422 Unprocessable Entity**: Validation errors in the request body.
+    - **500 Internal Server Error**: An error occurred while updating the pet.
 
-###  - Exemplo de Requisição DELETE para Remover um Pet
+###  - Example of DELETE Request to Remove a Pet
 - **DELETE /pet/:petId/tutor/:tutorId**
   ```
   http://localhost:3000/vetclinic/pet/:petId/tutor/:tutorId
   ```
-  - **Respostas Possíveis**:
-    - **200 OK**: Pet removido com sucesso.
-    - **404 Not Found**: Pet não encontrado.
-    - **500 Internal Server Error**: Ocorreu um erro ao remover o pet.
+  - **Possible Responses**:
+    - **200 OK**: Pet removed successfully.
+    - **404 Not Found**: Pet not found.
+    - **500 Internal Server Error**: An error occurred while removing the pet.
+
+---
