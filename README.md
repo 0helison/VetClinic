@@ -23,7 +23,6 @@ This challenge aimed to create an API that stores information about pet owners a
 "express-validator": "^7.0.1",
 "sequelize": "^6.37.3",
 "sqlite3": "^5.1.7",
-"swagger-ui-express": "^5.0.0",
 "nodemon": "^3.1.0"
 ```
 
