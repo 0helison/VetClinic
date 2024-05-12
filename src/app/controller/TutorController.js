@@ -2,27 +2,27 @@ const TutorService = require('../service/TutorService');
 
 module.exports = class TutorController {
     static async createTutor(req, res) {
-        
-            const tutorData = req.body;
-            await TutorService.createTutor(tutorData);
-            res.status(201).json({ message: 'Tutor created successfully' });
-        
-    }
+        const tutorData = req.body;
+
+        await TutorService.createTutor(tutorData);
+        res.status(201).json({ message: 'Tutor created successfully' });
+    };
 
     static async getAllTutors(req, res) {
         try {
             const tutors = await TutorService.getAllTutors();
-            res.status(200).json(tutors)
+            res.status(200).json(tutors);
         } catch (error) {
             console.error("Failed to get tutors: ", error);
-            res.status(500).json({ error: "An error occurred while getting the tutors"})
+            res.status(500).json({ error: "An error occurred while getting the tutors" });
         }
-    }
+    };
     
     static async updateTutor(req, res) {
         try {
             const tutorId = req.params.id;
             const tutorData = req.body;
+
             await TutorService.updateTutor(tutorId, tutorData); 
             res.status(200).json({ message: "Tutor updated successfully" }); 
         } catch (error) {
@@ -33,11 +33,12 @@ module.exports = class TutorController {
                 res.status(500).json({ error: "An error occurred while updating the tutor" });
             }
         }
-    }
+    };
 
     static async removeTutor(req, res) {
         try {
             const tutorId = req.params.id;
+            
             await TutorService.removeTutor(tutorId);
             res.status(200).json({ message: "Tutor removed successfully" });
         } catch (error) {
@@ -48,6 +49,5 @@ module.exports = class TutorController {
                 res.status(500).json({ error: "An error occurred while removing the tutor" });
             }
         }
-    }
-    
+    };
 };

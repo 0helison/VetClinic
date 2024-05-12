@@ -1,5 +1,5 @@
-const Tutor = require('../model/TutorModel')
-const Pet = require('../model/PetModel')
+const Tutor = require('../model/TutorModel');
+const Pet = require('../model/PetModel');
 
 class TutorRepository {
     static async createTutor(tutorData) {
@@ -8,7 +8,7 @@ class TutorRepository {
 
     static async getAllTutors() {
         return await Tutor.findAll({ 
-            include: [{ model: Pet, as: 'pets'}],
+            include: [{ model: Pet, as: 'pets' }],
             limit: 10,
         });
     }
@@ -18,7 +18,7 @@ class TutorRepository {
     }
 
     static async removeTutor(tutorId) {
-        return await Tutor.destroy({ where: { id: tutorId } })
+        return await Tutor.destroy({ where: { id: tutorId } });
     }
 
     static async getByTutorId(tutorId) {
@@ -28,4 +28,3 @@ class TutorRepository {
 }
 
 module.exports = TutorRepository;
-

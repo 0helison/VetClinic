@@ -15,7 +15,7 @@ module.exports = class PetController {
             console.error('Error creating pet:', error);
             res.status(500).json({ error: 'An error occurred while creating the pet' });
         } 
-    }
+    };
 
     static async updatePet(req, res) {
         try {
@@ -34,7 +34,7 @@ module.exports = class PetController {
                 res.status(500).json({ error: "An error occurred while removing the pet" });
             }
         }
-    } 
+    }; 
     
     static async removePet(req, res) {
         try {
@@ -51,5 +51,5 @@ module.exports = class PetController {
                 res.status(500).json({ error: "An error occurred while removing the pet" });
             }
         }
-    }
+    };
 };

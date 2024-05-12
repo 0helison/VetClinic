@@ -1,23 +1,25 @@
 const PetRepository = require('../repository/PetRepository');
-const TutorService = require('./TutorService')
+const TutorService = require('./TutorService');
 
 module.exports = class PetService {
     static async createPet(petData) {
         try {
             await PetRepository.createPet(petData);
         } catch (error) {
-            throw new Error(error.message)
+            throw new Error(error.message);
         } 
     }
 
     static async updatePet(petId, petData, tutorId) {
         try {
             const pet = await PetService.getByPetId(petId);
+
             if (!pet) {
                 throw new Error('Pet not found');
             }
 
-            const tutor = await TutorService.getByTutorId(tutorId)
+            const tutor = await TutorService.getByTutorId(tutorId);
+            
             if (!tutor) {
                 throw new Error('Tutor not found');
             }
@@ -30,17 +32,19 @@ module.exports = class PetService {
 
     static async removePet(petId, tutorId) {
         try {
-            const pet = await PetService.getByPetId(petId)
+            const pet = await PetService.getByPetId(petId);
+
             if (!pet) {
                 throw new Error('Pet not found');
             }
 
-            const tutor = await TutorService.getByTutorId(tutorId)
+            const tutor = await TutorService.getByTutorId(tutorId);
+
             if (!tutor) {
                 throw new Error('Tutor not found');
             }
 
-            await PetRepository.removePet(petId)
+            await PetRepository.removePet(petId);
         } catch (error) {
             throw new Error(error.message);
         }  
@@ -48,7 +52,7 @@ module.exports = class PetService {
 
     static async getByPetId(petId) {
         try {
-            return await PetRepository.getByPetId(petId)
+            return await PetRepository.getByPetId(petId);
         } catch (error) {
             throw new Error(error.message);
         }

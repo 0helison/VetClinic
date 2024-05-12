@@ -5,7 +5,7 @@ const petCreateValidation = require('../app/middleware/petValidation');
 const validate = require('../app/middleware/handleValidation');
 
 router.post('/pet/:tutorId', petCreateValidation(), validate, PetController.createPet);
-router.put('/pet/:petId/tutor/:tutorId', petCreateValidation(), validate, PetController.updatePet)
-router.delete('/pet/:petId/tutor/:tutorId', PetController.removePet)
+router.put('/pet/:petId/tutor/:tutorId', petCreateValidation(), validate, PetController.updatePet);
+router.delete('/pet/:petId/tutor/:tutorId', PetController.removePet);
 
-module.exports = router;  
+module.exports = router;

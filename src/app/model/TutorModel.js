@@ -1,6 +1,6 @@
 const { DataTypes, Model } = require('sequelize');
 const db = require('../../config/connection');
-const Pet = require('./PetModel')
+const Pet = require('./PetModel');
 
 class Tutor extends Model {}
 
@@ -19,7 +19,7 @@ Tutor.init({
     },
     date_of_birth: {
         type: DataTypes.DATE,
-        allowNull: false, 
+        allowNull: false,
     },
     zip_code: {
         type: DataTypes.STRING,
@@ -29,11 +29,10 @@ Tutor.init({
     sequelize: db,
     modelName: 'Tutor',
     tableName: 'tutors',
-    timestamps: false, 
-    underscored: true, 
+    timestamps: false,
+    underscored: true,
 });
 
 Tutor.hasMany(Pet, { foreignKey: 'tutor_id', as: 'pets' });
 
-module.exports = Tutor;
-
+module.exports = Tutor

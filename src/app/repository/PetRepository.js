@@ -1,4 +1,4 @@
-const Pet = require('../model/PetModel')
+const Pet = require('../model/PetModel');
 
 class PetRepository {
     static async createPet(petData) {
@@ -6,11 +6,11 @@ class PetRepository {
     }
 
     static async updatePet(petId, petData) {
-        return await Pet.update(petData, { where: { id: petId } })
+        return await Pet.update(petData, { where: { id: petId } });
     }
 
     static async removePet(petId) {
-        return await Pet.destroy({ where: { id: petId } })
+        return await Pet.destroy({ where: { id: petId } });
     }
 
     static async getByPetId(petId) {
@@ -20,5 +20,3 @@ class PetRepository {
 }
 
 module.exports = PetRepository;
-
-  

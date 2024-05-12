@@ -28,9 +28,8 @@ Pet.init({
     sequelize: db,
     modelName: 'Pet',
     tableName: 'pets',
-    timestamps: false, 
-    underscored: true, 
+    timestamps: false,
+    underscored: true,
 });
 
 module.exports = Pet;
-
