@@ -21,9 +21,9 @@ Pet.init({
         allowNull: false,
     },
     date_of_birth: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false,
-    },
+    }
 }, {
     sequelize: db,
     modelName: 'Pet',

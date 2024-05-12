@@ -14,7 +14,8 @@ const petCreateValidation = () => {
         
         body("carry")
         .isString().withMessage('O carry é obrigatório.')
-        .isLength({ min: 1 }).withMessage('O carry deve ter no máximo 1 caractere.'),
+        .isLength({ min: 1 }).withMessage('O carry deve ter no mínimo 1 caractere.')
+        .isLength({ max: 1 }).withMessage('O carry deve ter no máximo 1 caractere.'),
 
         body("weight")
         .isNumeric().withMessage('O peso precisa ser um número.')

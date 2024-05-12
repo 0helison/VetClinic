@@ -18,7 +18,7 @@ Tutor.init({
         allowNull: false,
     },
     date_of_birth: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false, 
     },
     zip_code: {
