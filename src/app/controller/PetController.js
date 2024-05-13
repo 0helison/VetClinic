@@ -8,7 +8,7 @@ module.exports = class PetController {
             const tutorId = req.params.tutorId;
 
             await PetService.createPet(petData, tutorId);
-            
+
             petData.tutor_id = tutorId;
 
             await PetService.createPet(petData, tutorId);
@@ -16,12 +16,12 @@ module.exports = class PetController {
             
         } catch (error) {
             if (error.message === 'Pet not found') {
-                res.status(404).json({ error: "Pet not found" });
+                res.status(404).json({ error: 'Pet not found' });
             } else if (error.message === 'Tutor not found') {
-                res.status(404).json({ error: "Tutor not found" });
+                res.status(404).json({ error: 'Tutor not found' });
             } else {
-                console.error("Failed to create tutor: ", error);
-                res.status(500).json({ error: "An error occurred while creating the pet" });
+                console.error('Failed to create tutor: ', error);
+                res.status(500).json({ error: 'An error occurred while creating the pet' });
             }
         } 
     };
@@ -34,15 +34,15 @@ module.exports = class PetController {
             petData.tutor_id = tutorId;
 
             await PetService.updatePet(petId, petData, tutorId); 
-            res.status(200).json({ message: "Pet updated successfully" }); 
+            res.status(200).json({ message: 'Pet updated successfully' }); 
         } catch (error) {
             if (error.message === 'Pet not found') {
-                res.status(404).json({ error: "Pet not found" });
+                res.status(404).json({ error: 'Pet not found' });
             } else if (error.message === 'Tutor not found') {
                 res.status(404).json({ error: 'Tutor not found' });
             } else {
-                console.error("Failed to remove tutor: ", error);
-                res.status(500).json({ error: "An error occurred while updating the pet" });
+                console.error('Failed to update tutor: ', error);
+                res.status(500).json({ error: 'An error occurred while updating the pet' });
             }
         }
     }; 
@@ -53,13 +53,13 @@ module.exports = class PetController {
             const tutorId = req.params.tutorId;
 
             await PetService.removePet(petId, tutorId);
-            res.status(200).json({ message: "Pet removed successfully" });
+            res.status(200).json({ message: 'Pet removed successfully' });
         } catch (error) {
             if (error.message === 'Pet not found') {
                 res.status(404).json({ error: "Pet not found" });
             } else {
-                console.error("Failed to remove tutor: ", error);
-                res.status(500).json({ error: "An error occurred while removing the pet" });
+                console.error('Failed to remove tutor: ', error);
+                res.status(500).json({ error: 'An error occurred while removing the pet' });
             }
         }
     };
