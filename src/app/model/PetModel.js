@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require('sequelize');
 const db = require('../../config/connection');
+const Tutor = require('./TutorModel');
 
 class Pet extends Model {}
 

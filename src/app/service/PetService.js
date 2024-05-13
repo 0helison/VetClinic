@@ -2,8 +2,14 @@ const PetRepository = require('../repository/PetRepository');
 const TutorService = require('./TutorService');
 
 module.exports = class PetService {
-    static async createPet(petData) {
+    static async createPet(petData, tutorId) {
         try {
+            const tutor = await TutorService.getByTutorId(tutorId);
+            
+            if (!tutor) {
+                throw new Error('Tutor not found');
+            }
+
             await PetRepository.createPet(petData);
         } catch (error) {
             throw new Error(error.message);
@@ -30,18 +36,12 @@ module.exports = class PetService {
         }
     }
 
-    static async removePet(petId, tutorId) {
+    static async removePet(petId) {
         try {
             const pet = await PetService.getByPetId(petId);
 
             if (!pet) {
                 throw new Error('Pet not found');
-            }
-
-            const tutor = await TutorService.getByTutorId(tutorId);
-
-            if (!tutor) {
-                throw new Error('Tutor not found');
             }
 
             await PetRepository.removePet(petId);

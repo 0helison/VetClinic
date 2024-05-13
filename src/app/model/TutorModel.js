@@ -35,4 +35,4 @@ Tutor.init({
 
 Tutor.hasMany(Pet, { foreignKey: 'tutor_id', as: 'pets' });
 
-module.exports = Tutor
+module.exports = Tutor;

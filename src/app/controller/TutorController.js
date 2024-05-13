@@ -13,8 +13,8 @@ module.exports = class TutorController {
             const tutors = await TutorService.getAllTutors();
             res.status(200).json(tutors);
         } catch (error) {
-            console.error("Failed to get tutors: ", error);
-            res.status(500).json({ error: "An error occurred while getting the tutors" });
+            console.error('Failed to get tutors: ', error);
+            res.status(500).json({ error: 'An error occurred while getting the tutors' });
         }
     };
     
@@ -24,12 +24,12 @@ module.exports = class TutorController {
             const tutorData = req.body;
 
             await TutorService.updateTutor(tutorId, tutorData); 
-            res.status(200).json({ message: "Tutor updated successfully" }); 
+            res.status(200).json({ message: 'Tutor updated successfully' }); 
         } catch (error) {
             if (error.message === 'Tutor not found') {
                 res.status(404).json({ error: "Tutor not found" });
             } else {
-                console.error("Failed to update tutor: ", error);
+                console.error('Failed to update tutor: ', error);
                 res.status(500).json({ error: "An error occurred while updating the tutor" });
             }
         }
@@ -40,13 +40,13 @@ module.exports = class TutorController {
             const tutorId = req.params.id;
             
             await TutorService.removeTutor(tutorId);
-            res.status(200).json({ message: "Tutor removed successfully" });
+            res.status(200).json({ message: 'Tutor removed successfully' });
         } catch (error) {
             if (error.message === 'Tutor not found') {
-                res.status(404).json({ error: "Tutor not found" });
+                res.status(404).json({ error: 'Tutor not found' });
             } else {
-                console.error("Failed to remove tutor: ", error);
-                res.status(500).json({ error: "An error occurred while removing the tutor" });
+                console.error('Failed to remove tutor: ', error);
+                res.status(500).json({ error: 'An error occurred while removing the tutor' });
             }
         }
     };

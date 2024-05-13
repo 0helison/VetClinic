@@ -18,7 +18,8 @@ class TutorRepository {
     }
 
     static async removeTutor(tutorId) {
-        return await Tutor.destroy({ where: { id: tutorId } });
+        return await Tutor.findByPk(tutorId, { include: [{ model: Pet, as: 'pets' }] })
+        .then(tutor => Promise.all(tutor.pets.map(pet => pet.destroy())).then(() => tutor.destroy()));
     }
 
     static async getByTutorId(tutorId) {
