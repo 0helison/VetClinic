@@ -3,7 +3,7 @@
 ---
 
 ## - Description
-This challenge aimed to create an API that stores information about pet owners and pets of a veterinary clinic, using the Express framework, the Sequelize ORM, and integrating SQLite with Node.js.
+This challenge aimed to create an API that stores information about pet owners and pets of a veterinary clinic, using the Express framework, the Sequelize ORM, and integrating SQLite with Node.js..
 
 ---
 
